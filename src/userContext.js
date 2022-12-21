@@ -24,7 +24,7 @@ function ContextProvider ({children}) {
     function addToCart(id){
         const selectedPic = photos.filter(photo=>photo.id === id)[0]
         const alreadyInCart = cartItems.some(item=>item.id===selectedPic.id)
-        console.log(cartItems)
+        
         if(!alreadyInCart){
             setCartItems(prevState => [...prevState, selectedPic])
             const cartedArr = photos.map(photo => photo.id === id? {...photo,inCart: true} : photo)
@@ -35,13 +35,14 @@ function ContextProvider ({children}) {
             const cartedArr = photos.map(photo => photo.id === id? {...photo,inCart: false} : photo)
             setPhotos(cartedArr)
         }
-        
     }
 
-    console.log(cartItems)
+    function emptyCart(){
+        setCartItems([])
+    }
 
     return (
-        <Context.Provider value={{photos, toggleFavorite, addToCart}}>
+        <Context.Provider value={{photos, toggleFavorite, addToCart,cartItems,emptyCart}}>
             {children}
         </Context.Provider>
     )
