@@ -1,13 +1,19 @@
 import React, {useState, useContext} from 'react'
 import PropTypes from 'prop-types';
 import { Context } from '../userContext';
+import useHover from '../hooks/useHover';
 
 /* you can also bring toggle favorite using context instead of props from photos */
 function Image({className,img,toggleFavorite,isFavorite,inCart}) {
 
-  const [hovered, setHovered] = useState(false)
+  // const [hovered, setHovered] = useState(false)
+
+  const [hovered,buttonRef] = useHover()
 
   const {addToCart} = useContext(Context)
+
+ /*  
+  These were used before custom hook was created
 
   function mouseEnter(){
     setHovered(true) 
@@ -15,7 +21,7 @@ function Image({className,img,toggleFavorite,isFavorite,inCart}) {
 
   function mouseLeave(){
     setHovered(false)
-  }
+  } */
 
   /* function the return cart icon is item is cart already */
   function isCarted(){
@@ -27,7 +33,7 @@ function Image({className,img,toggleFavorite,isFavorite,inCart}) {
   }
 
   return (
-    <div onMouseOver={mouseEnter} onMouseLeave={mouseLeave} className={`${className} image-container`}>
+    <div ref={buttonRef} className={`${className} image-container`}>
             {hovered && <i onClick={()=>toggleFavorite(img.id)} className="ri-heart-line favorite"></i>}
             {isFavorite && <i onClick={()=>toggleFavorite(img.id)} className="ri-heart-fill favorite"></i>}
             {isCarted()}

@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react"
-
+import data from "./data"
 const Context = React.createContext()
 
 /* destructuring children from props so no need to props.childlren but just {children} */
@@ -10,9 +10,7 @@ function ContextProvider ({children}) {
 
     /* empty array of depencies makes useEffect run once  */
     useEffect(()=>{
-        fetch('https://raw.githubusercontent.com/bobziroll/scrimba-react-bootcamp-images/master/images.json')
-            .then(res => res.json())
-            .then(data => setPhotos(data))
+        setPhotos(data)
     },[])
 
     function toggleFavorite(id) {

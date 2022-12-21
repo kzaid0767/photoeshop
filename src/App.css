@@ -1,9 +1,9 @@
 :root {
   --black: #150605;
   --red: #EA453C;
-  --pink: #F47B6E;
+  --pink: #0e11c0a2;
   --light-blue: #EFFBFE;
-  --blue: #ACE6EC;
+  --blue: #0f12e7;
 }
 
 html, body {
@@ -126,6 +126,15 @@ header {
   -webkit-box-shadow: 0px 2px 10px -5px rgba(21,6,5,1);
   -moz-box-shadow: 0px 2px 10px -5px rgba(21,6,5,1);
   box-shadow: 0px 2px 10px -5px rgba(21,6,5,1);
+}
+
+button{
+  font-family: 'Oswald', sans-serif;
+  border: 1px solid #0e11c0a2 ;
+  background-color: #0e11c0a2;
+  border-radius: 0.4rem;  
+  color: var(--light-blue);
+  font-size: 1rem;
 }
 
 a {
